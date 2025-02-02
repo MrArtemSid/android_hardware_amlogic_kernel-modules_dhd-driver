@@ -530,7 +530,7 @@ modules_install:
 
 bcmdhd_sdio:
 	$(warning "building BCMDHD_SDIO..........")
-	$(MAKE) -C $(KERNEL_SRC) M=$(M) CONFIG_DHD_USE_STATIC_BUF=y CONFIG_BCMDHD_SDIO=y modules
+	$(MAKE) -C $(KERNEL_SRC) M=$(M) CONFIG_DHD_USE_STATIC_BUF=y CONFIG_BCMDHD_SDIO=y CONFIG_BCMDHD_DISABLE_WOWLAN=y modules
 
 bcmdhd_pcie:
 	$(warning "building BCMDHD_PCIE..........")
