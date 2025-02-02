@@ -49,6 +49,7 @@ CONFIG_BCMDHD_PROPTXSTATUS := y
 CONFIG_DHD_USE_STATIC_BUF := y
 #CONFIG_BCMDHD_STATIC_BUF_IN_DHD := y
 
+CONFIG_ANDROID_14 := y
 ifeq ($(CONFIG_ANDROID_14),y)
 CONFIG_BCMDHD_ANDROID_VERSION := 14
 CONFIG_BCMDHD_REQUEST_FW := y
@@ -529,8 +530,7 @@ modules_install:
 
 bcmdhd_sdio:
 	$(warning "building BCMDHD_SDIO..........")
-	$(MAKE) -C $(KERNEL_SRC) M=$(M) CONFIG_DHD_USE_STATIC_BUF=y modules
-	mv dhd.ko dhd_sdio.ko
+	$(MAKE) -C $(KERNEL_SRC) M=$(M) CONFIG_DHD_USE_STATIC_BUF=y CONFIG_BCMDHD_SDIO=y modules
 
 bcmdhd_pcie:
 	$(warning "building BCMDHD_PCIE..........")
