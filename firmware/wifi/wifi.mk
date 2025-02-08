@@ -7,10 +7,17 @@
 WIFI_FIRMWARE_PATH := kernel/amlogic/kernel-modules/dhd-driver/firmware/wifi
 
 # bcm4339a0_ag ap6335
+ifneq ($(filter %h96_max_x3,$(TARGET_PRODUCT)),)
+PRODUCT_COPY_FILES += \
+    $(WIFI_FIRMWARE_PATH)/bcm4339a0_ag/h96_max_x3/config.txt:$(TARGET_COPY_OUT_VENDOR)/firmware/wifi/6335/config.txt \
+    $(WIFI_FIRMWARE_PATH)/bcm4339a0_ag/h96_max_x3/fw_bcm4339a0_ag.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/wifi/6335/fw_bcm4339a0_ag.bin \
+    $(WIFI_FIRMWARE_PATH)/bcm4339a0_ag/h96_max_x3/nvram_ap6335.txt:$(TARGET_COPY_OUT_VENDOR)/firmware/wifi/6335/nvram_ap6335.txt
+else
 PRODUCT_COPY_FILES += \
     $(WIFI_FIRMWARE_PATH)/bcm4339a0_ag/config_bcm4339a0_ag.txt:$(TARGET_COPY_OUT_VENDOR)/firmware/wifi/config_bcm4339a0_ag.txt \
     $(WIFI_FIRMWARE_PATH)/bcm4339a0_ag/fw_bcm4339a0_ag.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/wifi/fw_bcm4339a0_ag.bin \
     $(WIFI_FIRMWARE_PATH)/bcm4339a0_ag/nvram_ap6335.txt:$(TARGET_COPY_OUT_VENDOR)/firmware/wifi/nvram_ap6335.txt
+endif
 
 # bcm4356a2_ag ap6356
 PRODUCT_COPY_FILES += \
